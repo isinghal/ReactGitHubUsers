@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link  } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link  } from 'react-router-dom';
 class Header extends Component {
     render(){
         return (
@@ -11,8 +11,8 @@ class Header extends Component {
                         <a className="navbar-brand">WebSiteName</a>
                     </div>
                         <ul className="nav navbar-nav">
-                                <li className="active"> <Link to="/home">Home</Link></li>
-                                <li><Link to="/gitUsers">Git Users</Link></li>
+                                <HeaderLink to="/home"  label ='home'/>
+                                <HeaderLink to="/gitUsers" label = 'Git Users' />
                         </ul>
                 </div>
                 </nav>
@@ -21,4 +21,16 @@ class Header extends Component {
         )
     }
 }
+
+const HeaderLink = ({ label, to, activeOnlyWhenExact }) => (
+    <Route
+      path={to}
+      exact={activeOnlyWhenExact}
+      children={({ match }) => (
+        <li className={match ? "active" : ""}>
+          <Link to={to}>{label}</Link>
+        </li>
+      )}
+    />
+  );
 export default Header;
