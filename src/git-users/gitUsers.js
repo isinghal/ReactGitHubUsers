@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import User from './user';
+import Loader from "../loader/loader"
 class GitUsers extends Component {
  
   users = [];
@@ -8,6 +9,7 @@ class GitUsers extends Component {
     super();
     this.state = {
       gitusers: [],
+      loading : true
     };
     this.loadMore = this.loadMore.bind(this);
   }
@@ -18,7 +20,8 @@ class GitUsers extends Component {
         if (data.items) {
           this.users = this.users.concat(data.items);
           this.setState({
-            gitusers: this.users
+            gitusers: this.users,
+            loading:false
           })
         }
 
@@ -28,6 +31,10 @@ class GitUsers extends Component {
 
   loadMore(){
     this.currentPage++;
+    this.setState({
+      gitusers: this.state.gitusers,
+      loading:true
+    })
     this.fetchData();
   }
 
@@ -35,7 +42,12 @@ class GitUsers extends Component {
    this.fetchData();
   };
   render() {
+    const { loading } = this.state;
+  
+
     return (<div>
+        { (()=>{if(loading)
+          return <Loader />})()}
       {this.state.gitusers.map((data) => {
         return (<div className='user'>
           <User data={data}/>

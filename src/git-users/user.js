@@ -15,13 +15,13 @@ class User extends Component {
                         <div className="col-sm-4 col-md-4">
                             <br />
                             <h3><b><strong>{this.props.data.login}</strong></b></h3>
-                            <h4>COMPANY NAME</h4>
+                           
                         </div>
                         <div className="col-sm-4 col-md-4">
                             <br />
                             <center>
-                                <h3>4890</h3>
-                                <p>points</p>
+                                {/* <h3>4890</h3>
+                                <p>points</p> */}
                             </center>
                         </div>
                     </div>
