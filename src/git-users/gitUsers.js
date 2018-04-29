@@ -14,7 +14,7 @@ class GitUsers extends Component {
     this.loadMore = this.loadMore.bind(this);
   }
   fetchData(){
-    fetch(`https://api.github.com/search/users?q=+location:india+language:javascript&page=${this.currentPage}&per_page=20&sort=followers`).then((data) => {
+    fetch(`https://api.github.com/search/users?q=+location:india+language:javascript&page=${this.currentPage}&per_page=50&sort=followers`).then((data) => {
       data.json().then((data) => {
        
         if (data.items) {
