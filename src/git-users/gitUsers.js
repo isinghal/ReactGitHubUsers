@@ -49,8 +49,8 @@ class GitUsers extends Component {
         { (()=>{if(loading)
           return <Loader />})()}
       {this.state.gitusers.map((data) => {
-        return (<div className='user'>
-          <User data={data}/>
+        return (<div key={data.id} className='user'>
+          <User  data={data}/>
         </div>
         )
       })}
